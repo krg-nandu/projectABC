@@ -452,7 +452,7 @@ def model_inference(args):
 def run(datafile='../data/chong/chong_full_cnn_coh.pickle', nsample=6, model=None, nbin=None, N=None, proposal=None, n_components=24):
 
     # set up the parallel pool for MLE initialization
-    n_workers = 8
+    n_workers = 1
     workers = Pool(n_workers)
 
     # load in the configurations

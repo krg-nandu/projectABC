@@ -507,21 +507,20 @@ def run(datafile='../data/chong/chong_full_cnn_coh.pickle', nsample=6, model=Non
 		    alpha = 1.0, 
 		    cmap = cm.coolwarm)
 	ax.set_ylabel(cfg.param_names[param],  
-		  fontsize = 16,
-		  labelpad = 20)
+		  fontsize = 12,
+		  labelpad = 30)
 	ax.set_xlabel('RT',  
-		  fontsize = 16, 
-		  labelpad = 20)
+		  fontsize = 12, 
+		  labelpad = 30)
 	ax.set_zlabel('Likelihood',  
-		  fontsize = 16, 
-		  labelpad = 20)
-	'''
-	ax.set_zticks(np.round(np.linspace(min(Z), max(Z), 5), 1))
-	ax.set_yticks(np.round(np.linspace(min(Y), max(Y), 5), 1))
-	ax.set_xticks(np.round(np.linspace(min(X), max(X), 5), 1))
-	'''
+		  fontsize = 12, 
+		  labelpad = 30)
+	#import ipdb; ipdb.set_trace()	
+	ax.set_zticks(np.round_(np.linspace(min(Z), max(Z), 5),decimals=3))
+	ax.set_yticks(np.linspace(min(Y), max(Y), 5))
+	ax.set_xticks(np.linspace(min(X), max(X), 5))
 
-	ax.tick_params(labelsize = 16)
+	ax.tick_params(labelsize = 12)
 	ax.w_xaxis.set_pane_color((1.0, 1.0, 1.0, 1.0))
 	ax.w_yaxis.set_pane_color((1.0, 1.0, 1.0, 1.0))
 	ax.w_zaxis.set_pane_color((1.0, 1.0, 1.0, 1.0))
@@ -542,6 +541,6 @@ if __name__ == '__main__':
     parser.add_argument('--proposal', type=str)
     args = parser.parse_args()
     if args.model == 'ddm' or args.model == 'ddm_analytic':
-        start_params = [0., 1, 0.5, 1]
+        start_params = [0., 1.5, 0.5, 1]
         vary_range_vec = [[-2, 2], [0.3, 2], [0.2, 0.8], [0, 2]]
         run(nsample=args.nsample, model=args.model, nbin=args.nbin, N=args.N, proposal=args.proposal, start_params=start_params, vary_range=vary_range_vec)
